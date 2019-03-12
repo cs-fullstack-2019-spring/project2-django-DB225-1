@@ -1,0 +1,10 @@
+{% extends 'wikiApp/base.html' %}
+
+{% block content %}
+<h2>NEW ACCOUNT</h2>
+<form method="post">
+    {% csrf_token %}
+    <button>SUBMIT</button>
+</form>
+<a href="{% url 'index' %}">Back</a>
+{% endblock %}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block header %}
+{% if user.is_authenticated %}
+<ul>
+    <li>
+        <a href="{% url 'index' %}">HOME</a>
+    </li>
+    <li>
+        <a href="{% url 'allEntries' %}">ALL ENTRIES</a>
+    </li>
+    <li>
+        <a href="{% url 'newEntry' %}">NEW ENTRY</a>
+    </li>
+    <li>
+        <a href="">YOUR ENTRIES</a>
+    </li>
+    <li>
+        <input type="search" placeholder="search item">
+    </li>
+</ul>
+{% else %}
+<ul>
+    <li>
+        <a href="{% url 'index' %}">HOME</a>
+    </li>
+    <li>
+        <a href="{% url 'allEntries' %}">ALL ENTRIES</a>
+    </li>
+    <li>
+        <input type="search" placeholder="search item">
+    </li>
+</ul>
+    {% endif %}
+{% endblock %}
+<hr>
+
+
+{% block content %}
+
+{% endblock %}
+<hr>
+{% block footer %}
+<p>I'm the footer</p>
+{% endblock %}
+</body>
+</html>
