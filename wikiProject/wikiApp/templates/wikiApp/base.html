@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'wikiApp/css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'wikiApp/css/base.css'%}">
+    <script src="{% static 'wikiApp/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'wikiApp/js/bootstrap.js' %}"></script>
 </head>
 <body>
 {% block header %}
@@ -18,12 +23,16 @@
         <a href="{% url 'newEntry' %}">NEW ENTRY</a>
     </li>
     <li>
-        <a href="">YOUR ENTRIES</a>
+        <a href="{% url 'yourEntries' %}">YOUR ENTRIES</a>
     </li>
     <li>
         <input type="search" placeholder="search item">
     </li>
+    <li>
+        <p>Hi, {{ user.get_username }}</p>
+    </li>
 </ul>
+<p><a href="{% url 'logout' %}">logout</a></p>
 {% else %}
 <ul>
     <li>
@@ -36,6 +45,8 @@
         <input type="search" placeholder="search item">
     </li>
 </ul>
+<p><a href="{% url 'login' %}">login</a></p>
+<p><a href="{% url 'newAccount' %}">New Account</a></p>
     {% endif %}
 {% endblock %}
 <hr>
@@ -46,7 +57,7 @@
 {% endblock %}
 <hr>
 {% block footer %}
-<p>I'm the footer</p>
+<p>I'm the footer ... &copy; Copyright {% now 'Y' %}</p>
 {% endblock %}
 </body>
 </html>

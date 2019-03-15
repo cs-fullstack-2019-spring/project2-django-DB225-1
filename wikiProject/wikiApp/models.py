@@ -14,20 +14,24 @@ class UserLoginModel(models.Model):
 
 
 class PostModel(models.Model):
-    title_Post = models.CharField(max_length=200)
-    text = models.TextField()
-    image = models.ImageField()
+    post_Title = models.CharField(max_length=200)
+    post_Text = models.TextField()
+    createdDateTime = models.DateTimeField(auto_now_add=True)
+    updatedDateTime = models.DateTimeField(auto_now=True)
+    post_Image = models.ImageField(upload_to="media/images/", null=True, blank=True)
     postForeignKey = models.ForeignKey(UserLoginModel, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
-        return self.title_Post
+        return self.post_Title
 
 
 class RelatedItemsModel(models.Model):
-    title_Item = models.CharField(max_length=200)
-    some_text = models.TextField()
-    logo = models.ImageField()
-    itemForeignKey = models.ForeignKey(UserLoginModel, on_delete=models.SET_NULL, null=True, blank=True)
+    item_Title = models.CharField(max_length=200)
+    item_Text = models.TextField()
+    created_date_time = models.DateTimeField(auto_now_add=True)
+    updated_date_time = models.DateTimeField(auto_now=True)
+    item_Image = models.ImageField(upload_to="images")
+    itemForeignKey = models.ForeignKey(PostModel, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
-        return self.title_Item
+        return self.item_Title

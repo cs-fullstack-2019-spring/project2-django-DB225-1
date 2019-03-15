@@ -2,4 +2,26 @@
 
 {% block content %}
 <h2>ALL ENTRIES</h2>
+{% if allPosts %}
+<div class="gridContainer">
+    {% for eachPost in allPosts %}
+    <div class="card" style="width: 18rem;">
+        <a href="{% url 'readEntry' eachPost.id %}">
+        <img class="card-img-top" src="{{ eachPost.post_Image.url }}" alt="Card image cap">
+        </a>
+        <div class="card-body">
+            <h5 class="card-title">{{ eachPost.post_Title }}</h5>
+            <p>All the next informations about {{ eachPost.post_Title }} are verified.</p>
+            <p class="card-text">created on :{{ eachPost.createdDateTime }}</p>
+            <p class="card-text">Updated on :{{ eachPost.updatedDateTime }}</p>
+            <a href="{% url 'editEntry' eachPost.id %}">Edit</a>
+            <a href="{% url 'deleteEntry' eachPost.id %}">Delete</a> <br> <br>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<h1>No Post Available</h1>
+{% endif %}
+<a href="{% url 'index' %}">BACK</a>
 {% endblock %}

@@ -1,5 +1,11 @@
 {% extends 'wikiApp/base.html' %}
 
 {% block content %}
-<h2>ADD RELATED ITEMS</h2>
+<h2>RELATED ITEMS</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>CREATE ITEM</button>
+</form>
+<a href="{% url 'readEntry' item_id %}">BACK TO NEW ENTRY</a>
 {% endblock %}

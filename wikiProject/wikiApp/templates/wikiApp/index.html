@@ -1,12 +1,9 @@
 {% extends 'wikiApp/base.html' %}
 
 {% block content %}
-<h2>HOME</h2>
 {% if user.is_authenticated %}
-<p><a href="{% url 'logout' %}">logout</a></p>
-
+<h2>WELCOME TO YOUR WIKI WORLD</h2>
 {% else %}
-<p><a href="{% url 'login' %}">login</a></p>
-<p><a href="{% url 'newAccount' %}">New Account</a></p>
+<h2>WIKIPEDIA</h2>
 {% endif %}
 {% endblock %}

@@ -1,5 +1,11 @@
 {% extends 'wikiApp/base.html' %}
 
 {% block content %}
-<h2>THE CLICKED POST</h2>
-{% endblock %}
+<section>
+<h2>{{ clickOnEntry.post_Title }} </h2>
+<p>{{ clickOnEntry.post_Text}}</p>
+</section>
+
+<a href="{% url 'newRelatedItems' clickOnEntry.id %}">Add Related Item</a> <br><br>
+<a href="{% url 'allEntries' %}">BACK TO THE ENTRIES</a>
+{% endblock content %}

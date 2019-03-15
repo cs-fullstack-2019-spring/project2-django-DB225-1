@@ -2,4 +2,11 @@
 
 {% block content %}
 <h2>NEW ENTRY</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ new_entry.as_p }}
+    <button>CREATE</button>
+</form>
+<a href="{% url 'allEntries' %}">BACK TO THE ENTRIES</a>
+
 {% endblock %}
