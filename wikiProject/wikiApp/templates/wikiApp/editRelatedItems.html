@@ -1,5 +1,13 @@
 {% extends 'wikiApp/base.html' %}
 
 {% block content %}
+<section>
 <h2>EDIT ITEM</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ editedItem.as_p }}
+    <button>UPDATE</button>
+</form>
+<a href="{% url 'allEntries' %}">&#10237; BACK TO DETAILS PAGE</a>
+</section>
 {% endblock %}

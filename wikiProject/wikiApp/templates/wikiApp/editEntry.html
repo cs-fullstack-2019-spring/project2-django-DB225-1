@@ -1,11 +1,13 @@
 {% extends 'wikiApp/base.html' %}
 
 {% block content %}
+<section>
 <h2>EDIT POST</h2>
 <form method="post">
     {% csrf_token %}
     {{ editedEntry.as_p }}
     <button>UPDATE</button>
 </form>
-<a href="{% url 'allEntries' %}">BACK TO ENTRIES</a>
+<a href="{% url 'allEntries' %}">&#10237; BACK TO ENTRIES</a>
+</section>
 {% endblock %}

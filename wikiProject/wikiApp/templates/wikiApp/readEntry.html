@@ -2,10 +2,18 @@
 
 {% block content %}
 <section>
-<h2>{{ clickOnEntry.post_Title }} </h2>
+<h1>{{ clickOnEntry.post_Title }} </h1>
 <p>{{ clickOnEntry.post_Text}}</p>
+    <a href="{% url 'allEntries' %}">&#10237; BACK TO THE ENTRIES</a>
 </section>
-
-<a href="{% url 'newRelatedItems' clickOnEntry.id %}">Add Related Item</a> <br><br>
-<a href="{% url 'allEntries' %}">BACK TO THE ENTRIES</a>
+<aside>
+<h6>Related information about {{ clickOnEntry.post_Title }}:</h6>
+    {% for items in relatedItem %}
+    <p>{{ items.item_Title }}</p>
+    <a href="{% url 'editRelatedItems' items.id %}">EDIT</a>
+    <a href="{% url 'deleteRelatedItems' items.id %}">DELETE</a>
+    <hr>
+    {% endfor %}
+    <a href="{% url 'newRelatedItems' clickOnEntry.id %}">Add Related Item</a> <br><br>
+</aside>
 {% endblock content %}

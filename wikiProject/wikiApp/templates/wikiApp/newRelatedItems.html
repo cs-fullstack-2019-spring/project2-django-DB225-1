@@ -1,11 +1,13 @@
 {% extends 'wikiApp/base.html' %}
 
 {% block content %}
+<section>
 <h2>RELATED ITEMS</h2>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
-    <button>CREATE ITEM</button>
+    <button>CREATE</button>
 </form>
-<a href="{% url 'readEntry' item_id %}">BACK TO NEW ENTRY</a>
+<a href="{% url 'readEntry' item_id %}">&#10237; BACK TO THE DETAILS</a>
+</section>
 {% endblock %}

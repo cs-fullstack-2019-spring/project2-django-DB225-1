@@ -4,6 +4,8 @@ from .forms import UserLoginModel, UserLoginForm, RelatedItemsModel, RelatedItem
 
 
 # Create your views here.
+
+# The welcome page
 def index(request):
     return render(request, 'wikiApp/index.html')
 
@@ -32,7 +34,6 @@ def newEntry(request):
     print(request.POST)
     if request.method == 'POST' and new_entry.is_valid():
         new_entry = PostForm(request.POST, request.FILES)
-
         loggedInUser = get_object_or_404(UserLoginModel, username=request.user)
         PostModel.objects.create(post_Title=request.POST["post_Title"], post_Text=request.POST["post_Text"],
                                  post_Image=request.FILES["post_Image"], postForeignKey=loggedInUser)
@@ -42,7 +43,6 @@ def newEntry(request):
         print(new_entry.errors)
         print(new_entry.non_field_errors)
         new_entry = PostForm()
-
     return render(request, 'wikiApp/newEntry.html', {'new_entry': new_entry})
 
 
@@ -58,8 +58,10 @@ def yourEntries(request):
 
 # Click on any entry to have more informations
 def readEntry(request, entry_id):
+    relatedItem = RelatedItemsModel.objects.all()
     clickOnEntry = get_object_or_404(PostModel, pk=entry_id)
-    return render(request, 'wikiApp/readEntry.html', {'clickOnEntry': clickOnEntry})
+    print(relatedItem)
+    return render(request, 'wikiApp/readEntry.html', {'clickOnEntry': clickOnEntry, 'relatedItem': relatedItem})
 
 
 # Edit an entry
@@ -69,7 +71,6 @@ def editEntry(request, entry_id):
     if editedEntry.is_valid():
         editedEntry.save()
         return redirect('allEntries')
-
     return render(request, 'wikiApp/editEntry.html', {'editedEntry': editedEntry})
 
 
@@ -82,21 +83,38 @@ def deleteEntry(request, delete_id):
     return render(request, 'wikiApp/deleteEntry.html', {"delete_entry": delete_entry})
 
 
-# Each item related to the specific search
+# Create an item related to the specific search
 def newRelatedItems(request, item_id):
-    newItem = RelatedItemsForm(request.POST or None)
+    newItem = RelatedItemsForm(request.POST or None, request.FILES)
     if request.method == 'POST' and newItem.is_valid():
-        newItem = PostForm(request.POST, request.FILES)
-        ItemForEntries = get_object_or_404(RelatedItemsModel, pk=item_id)
+        print('doing this', request.method)
+        ItemForEntries = get_object_or_404(PostModel, pk=item_id)
+        item_image = ''
+        if request.FILES:
+            item_image = request.FILES['item_Image']
+
         RelatedItemsModel.objects.create(item_Title=request.POST['item_Title'], item_Text=request.POST['item_Text'],
-                                         item_Image=request.FILES['item_Image'], itemForeignKey=ItemForEntries)
-        return redirect('readEntry')
+                                         item_Image=item_image, itemForeignKey=ItemForEntries)
+        return redirect('readEntry', entry_id=item_id)
     return render(request, 'wikiApp/newRelatedItems.html', {'form': newItem, "item_id": item_id})
 
 
+# Edit the item related to the specific search
 def editRelatedItems(request, item_id):
-    return render(request, 'wikiApp/editRelatedEntry.html')
+    edit_item = get_object_or_404(PostModel, pk=item_id)
+    editedItem = RelatedItemsForm(request.POST or None, instance=edit_item)
+    if editedItem.is_valid():
+        editedItem.save()
+        return redirect('readEntry', entry_id=item_id)
+    return render(request, 'wikiApp/editRelatedItems.html', {'editedItem': editedItem}, {"item_id": item_id})
 
 
+# Delete the item related to the specific search
 def deleteRelatedItems(request, delete_item):
-    return render(request, 'wikiApp/deleteRelatedEntry.html')
+    delete_item = get_object_or_404(RelatedItemsModel, pk=delete_item)
+    if request.method == 'POST':
+        delete_item.delete()
+        return redirect('readEntry')
+    return render(request, 'wikiApp/deleteRelatedItems.html', {"delete_item": delete_item})
+
+

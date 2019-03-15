@@ -1,7 +1,8 @@
 {% extends "wikiApp/index.html" %}
 
 {% block content %}
-
+<section>
+<h2>LOG IN</h2>
 {% if form.errors %}
 <p>Your username and password didn't match |_(-_-)_| . Please try again.</p>
 {% endif %}
@@ -33,6 +34,6 @@
     <input type="submit" value="login"/>
     <input type="hidden" name="next" value="{{ next }}"/>
 </form><br>
-<a href="{% url 'index' %}">Back</a>
-
+<a href="{% url 'index' %}">&#10237; HOME</a>
+</section>
 {% endblock %}

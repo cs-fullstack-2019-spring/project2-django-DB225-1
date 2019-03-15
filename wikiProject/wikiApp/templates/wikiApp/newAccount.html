@@ -1,11 +1,13 @@
 {% extends 'wikiApp/base.html' %}
 
 {% block content %}
+<section>
 <h2>NEW ACCOUNT</h2>
 <form method="post">
     {% csrf_token %}
     {{ newprofile.as_p }}
     <button>SUBMIT</button>
 </form>
-<a href="{% url 'index' %}">Back</a>
+<a href="{% url 'index' %}">&#10237; HOME</a>
+</section>
 {% endblock %}

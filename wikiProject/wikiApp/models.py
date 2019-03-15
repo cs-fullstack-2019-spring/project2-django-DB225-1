@@ -30,7 +30,7 @@ class RelatedItemsModel(models.Model):
     item_Text = models.TextField()
     created_date_time = models.DateTimeField(auto_now_add=True)
     updated_date_time = models.DateTimeField(auto_now=True)
-    item_Image = models.ImageField(upload_to="images")
+    item_Image = models.ImageField(upload_to="media/images/", null=True, blank=True)
     itemForeignKey = models.ForeignKey(PostModel, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):

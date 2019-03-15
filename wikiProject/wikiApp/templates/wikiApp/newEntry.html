@@ -1,12 +1,13 @@
 {% extends 'wikiApp/base.html' %}
 
 {% block content %}
+<section>
 <h2>NEW ENTRY</h2>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ new_entry.as_p }}
     <button>CREATE</button>
 </form>
-<a href="{% url 'allEntries' %}">BACK TO THE ENTRIES</a>
-
+<a href="{% url 'allEntries' %}">&#10237; BACK TO THE ENTRIES</a>
+</section>
 {% endblock %}

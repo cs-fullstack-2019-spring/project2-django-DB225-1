@@ -1,9 +1,12 @@
 {% extends 'wikiApp/base.html' %}
 
 {% block content %}
+<section>
 {% if user.is_authenticated %}
 <h2>WELCOME TO YOUR WIKI WORLD</h2>
+
 {% else %}
 <h2>WIKIPEDIA</h2>
 {% endif %}
+</section>
 {% endblock %}

@@ -4,60 +4,54 @@
     <meta charset="UTF-8">
     <title>Title</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'wikiApp/css/bootstrap.css'%}">
-    <link rel="stylesheet" href="{% static 'wikiApp/css/base.css'%}">
+    <link rel="stylesheet" href="{% static 'wikiApp/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'wikiApp/css/base.css' %}">
     <script src="{% static 'wikiApp/js/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'wikiApp/js/bootstrap.js' %}"></script>
+
 </head>
 <body>
+<div class="containerGrid">
 {% block header %}
 {% if user.is_authenticated %}
-<ul>
-    <li>
-        <a href="{% url 'index' %}">HOME</a>
-    </li>
-    <li>
-        <a href="{% url 'allEntries' %}">ALL ENTRIES</a>
-    </li>
-    <li>
-        <a href="{% url 'newEntry' %}">NEW ENTRY</a>
-    </li>
-    <li>
-        <a href="{% url 'yourEntries' %}">YOUR ENTRIES</a>
-    </li>
-    <li>
-        <input type="search" placeholder="search item">
-    </li>
-    <li>
-        <p>Hi, {{ user.get_username }}</p>
-    </li>
-</ul>
-<p><a href="{% url 'logout' %}">logout</a></p>
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand">Hi, {{ user.get_username }}</a>
+    <a href="{% url 'index' %}">HOME</a>
+    <a href="{% url 'allEntries' %}">ALL ENTRIES</a>
+    <a href="{% url 'newEntry' %}">NEW ENTRY</a>
+    <a href="{% url 'yourEntries' %}">YOUR ENTRIES</a>
+    <a href="{% url 'logout' %}">logout</a>
+    <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search Term(s)" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</nav>
 {% else %}
-<ul>
-    <li>
-        <a href="{% url 'index' %}">HOME</a>
-    </li>
-    <li>
-        <a href="{% url 'allEntries' %}">ALL ENTRIES</a>
-    </li>
-    <li>
-        <input type="search" placeholder="search item">
-    </li>
-</ul>
-<p><a href="{% url 'login' %}">login</a></p>
-<p><a href="{% url 'newAccount' %}">New Account</a></p>
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand">W&middot;I&middot;K&middot;I</a>
+    <a href="{% url 'index' %}">HOME</a>
+    <a href="{% url 'allEntries' %}">ALL ENTRIES</a>
+    <a href="{% url 'login' %}">login</a>
+    <a href="{% url 'newAccount' %}">New Account</a>
+    <form class="form-inline" method="post" action="search">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search Term(s)" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</nav>
     {% endif %}
 {% endblock %}
-<hr>
 
 
 {% block content %}
 
 {% endblock %}
-<hr>
+
+
 {% block footer %}
+    <div class="footer">
 <p>I'm the footer ... &copy; Copyright {% now 'Y' %}</p>
+</div>
 {% endblock %}
+</div>
 </body>
 </html>

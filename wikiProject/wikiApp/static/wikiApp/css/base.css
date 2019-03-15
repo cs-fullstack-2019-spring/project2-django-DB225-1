@@ -1,0 +1,74 @@
+.gridContainer{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 20px;
+}
+
+body{
+    background: rgba(0, 70, 0, 0.21);
+    margin: 1.5px 15px;
+}
+
+a{
+    color: darkgreen;
+}
+
+a:hover{
+    text-decoration: none;
+    color: darkgreen;
+}
+
+
+button{
+    border-radius: 10px;
+    background-color: rgba(21, 119, 43, 0.73);
+    color: white;
+    height: 45px;
+    width: 110px;
+}
+
+button:hover{
+    background: #0b2e13;
+}
+
+form{
+    border-radius: 15px;
+}
+
+
+
+
+
+
+.containerGrid{
+    display: grid;
+    grid-template-columns:  repeat(3, 1fr);
+    grid-gap: 15px;
+    grid-template-areas:
+            "nav nav nav"
+            "section section aside"
+            "footer footer footer";
+}
+
+nav{
+    grid-area: nav;
+    height:100px;
+}
+
+section{
+    grid-area: section;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+aside{
+    grid-area: aside;
+    border: 1px solid black;
+}
+
+.footer{
+    grid-area: footer;
+    text-align: center;
+    height: 100px;
+    background: rgba(0, 33, 0, 0.34);
+}
