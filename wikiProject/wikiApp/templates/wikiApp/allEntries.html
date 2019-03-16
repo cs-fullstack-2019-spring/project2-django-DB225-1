@@ -7,7 +7,7 @@
 {% if allPosts %}
 <div class="gridContainer">
     {% for eachPost in allPosts %}
-    <div class="card" style="width: 23rem;">
+    <div class="card" style="width: 22rem;">
         <a href="{% url 'readEntry' eachPost.id %}">
         <img class="card-img-top" src="{{ eachPost.post_Image.url }}" alt="Card image cap">
         </a>
@@ -16,8 +16,10 @@
             <p>All the next informations about {{ eachPost.post_Title }} are verified.</p>
             <p class="card-text">created on :{{ eachPost.createdDateTime }}</p>
             <p class="card-text">Updated on :{{ eachPost.updatedDateTime }}</p>
+            {% if user.is_authenticated %}
             <a href="{% url 'editEntry' eachPost.id %}">Edit</a>
             <a href="{% url 'deleteEntry' eachPost.id %}">Delete</a> <br> <br>
+            {% endif %}
         </div>
     </div>
     {% endfor %}
@@ -26,4 +28,7 @@
 <h1>No Post Available</h1>
 {% endif %}
 </section>
+<aside>
+   CLICK ON THE <span class="bigText">IMAGES</span> TO HAVE MORE DETAILS
+</aside>
 {% endblock %}

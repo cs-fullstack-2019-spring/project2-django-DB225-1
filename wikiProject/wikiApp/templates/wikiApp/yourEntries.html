@@ -7,7 +7,7 @@
 {% if user.is_authenticated %}
 <div class="gridContainer">
     {% for eachPost in personalInfo %}
-    <div class="card" style="width: 23rem;">
+    <div class="card" style="width: 22rem;">
         <a href="{% url 'readEntry' eachPost.id %}">
         <img class="card-img-top" src="{{ eachPost.post_Image.url }}" alt="Card image cap">
         </a>

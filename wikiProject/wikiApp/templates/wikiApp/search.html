@@ -4,24 +4,31 @@
 {% if research %}
 {% for eachEl in research %}
 
-<section>
+<section class="borderPage">
     <h1>{{ eachEl.post_Title }} </h1>
     <p>{{ eachEl.post_Text}}</p>
     <a href="{% url 'allEntries' %}">&#10237; BACK TO THE ENTRIES</a>
 </section>
-<aside>
+<aside class="borderPage">
     <h6>Related information about {{ eachEl.post_Title }}:</h6>
     {% if relatedItem %}
     {% for items in relatedItem %}
     <p>{{ items.item_Title }}</p>
+    {% if user.is_authenticated %}
     <a href="{% url 'editRelatedItems' items.id %}">EDIT</a>
     <a href="{% url 'deleteRelatedItems' items.id %}">DELETE</a>
+    {% endif %}
     <hr>
     {% endfor %}
     {% endif %}
+    {% if user.is_authenticated %}
     <a href="{% url 'newRelatedItems' eachEl.id %}">Add Related Item</a> <br><br>
+    {% endif %}
 </aside>
 
 {% endfor %}
+{% else %}
+<h3>No such information</h3>
 {% endif %}
+
 {% endblock %}

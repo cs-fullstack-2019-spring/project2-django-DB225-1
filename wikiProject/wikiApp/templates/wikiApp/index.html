@@ -1,9 +1,9 @@
 {% extends 'wikiApp/base.html' %}
 
 {% block content %}
-<section>
+<section class="borderPage">
 {% if user.is_authenticated %}
-<h2>WELCOME TO YOUR WIKI WORLD</h2>
+<h2 class="centerTitle">WELCOME TO YOUR WIKI WORLD</h2>
     {% if allPosts %}
         {% for eachPost in allPosts %}
     <h4>{{ eachPost.post_Title }}</h4>
@@ -14,7 +14,8 @@
     <h1>No Post Available</h1>
     {% endif %}
     {% else %}
-<h2>WIKIPEDIA</h2>
+<h2 class="centerTitle">WIKIPEDIA</h2>
+    <h5 class="centerTitle">The free encyclopedia</h5>
     {% if allPosts %}
     {% for eachPost in allPosts %}
     <h4>{{ eachPost.post_Title }}</h4>
@@ -26,4 +27,9 @@
     {% endif %}
 {% endif %}
 </section>
+<aside>
+    <h1>For a better view</h1>
+    <h1>GO TO</h1>
+   <h3><span class="blink_me">&#8632; ALL ENTRIES</span></h3>
+</aside>
 {% endblock %}

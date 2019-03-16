@@ -1,21 +1,25 @@
 {% extends 'wikiApp/base.html' %}
 
 {% block content %}
-<section>
-<h1>{{ clickOnEntry.post_Title }} </h1>
+<section class="borderPage">
+<h1 class="centerTitle">{{ clickOnEntry.post_Title }} </h1>
 <p>{{ clickOnEntry.post_Text}}</p>
     <a href="{% url 'allEntries' %}">&#10237; BACK TO THE ENTRIES</a>
 </section>
-<aside>
+<aside class="borderPage">
 <h6>Related information about {{ clickOnEntry.post_Title }}:</h6>
     {% if relatedItem %}
     {% for items in relatedItem %}
     <p>{{ items.item_Title }}</p>
+    {% if user.is_authenticated %}
     <a href="{% url 'editRelatedItems' items.id %}">EDIT</a>
     <a href="{% url 'deleteRelatedItems' items.id %}">DELETE</a>
     <hr>
+    {% endif %}
     {% endfor %}
     {% endif %}
+    {% if user.is_authenticated %}
     <a href="{% url 'newRelatedItems' clickOnEntry.id %}">Add Related Item</a> <br><br>
+    {% endif %}
 </aside>
 {% endblock content %}

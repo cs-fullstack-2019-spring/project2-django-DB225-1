@@ -1,24 +1,40 @@
+/*Display of the cards*/
 .gridContainer{
     display: grid;
     grid-template-columns: repeat(4,1fr);
     grid-gap: 20px;
 }
 
+/************************** BODY ************************************/
+/*Style for the complete page*/
 body{
     background: rgba(0, 70, 0, 0.21);
     margin: 1.5px 15px;
 }
 
+/*Style for the titles */
+h2{
+    font-weight: bold;
+}
+
+
+/*To center some of the titles*/
+.centerTitle{
+    text-align: center;
+}
+
+/*Style for the links*/
 a{
     color: darkgreen;
 }
 
+/*Hovering effect for the links*/
 a:hover{
     text-decoration: none;
     color: darkgreen;
 }
 
-
+/*Style for the buttons*/
 button, input[type=submit]{
     border-radius: 10px;
     background-color: rgba(21, 119, 43, 0.73);
@@ -27,11 +43,12 @@ button, input[type=submit]{
     width: 110px;
 }
 
+/*Hovering effect for the buttons*/
 button:hover, input[type=submit]:hover{
     background: #0b2e13;
 }
 
-
+/*Display of the whole body*/
 .containerGrid{
     display: grid;
     grid-template-columns:  repeat(4, 1fr);
@@ -42,29 +59,65 @@ button:hover, input[type=submit]:hover{
             "footer footer footer footer";
 }
 
+/*Display of the navBar*/
 nav{
     grid-area: nav;
     height:100px;
 }
 
+/*Display of the content of the body*/
 section{
     grid-area: section;
-    border: 1px solid black;
-    border-radius: 10px;
     padding: 20px;
 }
 
+/*Display of the sidebar*/
 aside{
     grid-area: aside;
-    border: 1px solid black;
-    border-radius: 10px;
     text-align: center;
 }
 
+/*Display of the footer*/
 .footer{
     grid-area: footer;
     text-align: center;
     height: 100px;
     background: rgba(0, 33, 0, 0.34);
+    border-radius: 10px;
 }
 
+/*The background of the content of the body , not all the complete page*/
+.borderPage{
+    background: rgba(0, 53, 0, 0.08);
+    border-radius: 10px;
+}
+
+
+/*The word 'IMAGES' in the guide text in the 'ALL ENTRIES' section*/
+.bigText{
+    font-size: xx-large;
+    font-weight: bold;
+}
+/****************************************************************************/
+
+/******************************** BLINK EFFECT *****************************/
+/*The blink effect in the word 'ALL ENTRIES' in the home page*/
+.blink_me{
+    -webkit-animation: blink_me 1s step-start infinite;
+    animation: blink_me 1s step-start infinite;
+    font-weight: bold;
+    font-size: 100px;
+}
+
+@keyframes blink_me{
+    0% {color: black}
+    25% {color: #2f7416}
+    100% {color: black}
+}
+
+@-webkit-keyframes blink_me{
+    0% {color: black}
+    25% {color: #2f7416}
+    100% {color: black}
+}
+/***************************************************************************/
