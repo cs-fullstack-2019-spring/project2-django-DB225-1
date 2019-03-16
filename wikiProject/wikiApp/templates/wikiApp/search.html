@@ -1,7 +1,25 @@
 {% extends 'wikiApp/base.html' %}
 
+{% block content %}
 {% if research %}
 {% for eachEl in research %}
-{{ eachEl.post_Title }}
+
+<section>
+    <h1>{{ eachEl.post_Title }} </h1>
+    <p>{{ eachEl.post_Text}}</p>
+    <a href="{% url 'allEntries' %}">&#10237; BACK TO THE ENTRIES</a>
+</section>
+<aside>
+    <h6>Related information about {{ eachEl.post_Title }}:</h6>
+    {% for items in relatedItem %}
+    <p>{{ items.item_Title }}</p>
+    <a href="{% url 'editRelatedItems' items.id %}">EDIT</a>
+    <a href="{% url 'deleteRelatedItems' items.id %}">DELETE</a>
+    <hr>
+    {% endfor %}
+    <a href="{% url 'newRelatedItems' eachEl.id %}">Add Related Item</a> <br><br>
+</aside>
+
 {% endfor %}
-{%endif %}
+{% endif %}
+{% endblock %}

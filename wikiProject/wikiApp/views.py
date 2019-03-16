@@ -123,5 +123,5 @@ def deleteRelatedItems(request, delete_item):
 
 def search(request):
     makeSearch = request.POST['mySearch']
-    research = PostModel.objects.filter(Q(post_Title__startwith=makeSearch))
+    research = PostModel.objects.filter(Q(post_Title__startswith=makeSearch))
     return render(request, 'wikiApp/search.html', {'research': research})
