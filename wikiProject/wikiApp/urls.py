@@ -18,6 +18,8 @@ urlpatterns = [
     path('newRelatedItems/<int:item_id>/', views.newRelatedItems, name="newRelatedItems"),
     path('editRelatedItems/<int:item_id>/', views.editRelatedItems, name="editRelatedItems"),
     path('deleteRelatedItems/<int:delete_item>/', views.deleteRelatedItems, name="deleteRelatedItems"),
+
+    path('searchPosts/', views.search, name="search"),
     path('media/<path:path>/', serve, {'document_root': settings.MEDIA_ROOT, }),
 
 ]

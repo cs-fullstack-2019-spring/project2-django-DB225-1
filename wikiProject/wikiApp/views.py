@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from .forms import UserLoginModel, UserLoginForm, RelatedItemsModel, RelatedItemsForm, PostModel, PostForm
+from django.db.models import Q
 
 
 # Create your views here.
@@ -101,11 +102,12 @@ def newRelatedItems(request, item_id):
 
 # Edit the item related to the specific search
 def editRelatedItems(request, item_id):
-    edit_item = get_object_or_404(PostModel, pk=item_id)
+    edit_item = get_object_or_404(RelatedItemsModel, pk=item_id)
     editedItem = RelatedItemsForm(request.POST or None, instance=edit_item)
     if editedItem.is_valid():
         editedItem.save()
-        return redirect('readEntry', entry_id=item_id)
+        print(editedItem)
+        return redirect('allEntries')
     return render(request, 'wikiApp/editRelatedItems.html', {'editedItem': editedItem}, {"item_id": item_id})
 
 
@@ -114,7 +116,12 @@ def deleteRelatedItems(request, delete_item):
     delete_item = get_object_or_404(RelatedItemsModel, pk=delete_item)
     if request.method == 'POST':
         delete_item.delete()
-        return redirect('readEntry')
+        print(delete_item)
+        return redirect('allEntries')
     return render(request, 'wikiApp/deleteRelatedItems.html', {"delete_item": delete_item})
 
 
+def search(request):
+    makeSearch = request.POST['mySearch']
+    research = PostModel.objects.filter(Q(post_Title__startwith=makeSearch))
+    return render(request, 'wikiApp/search.html', {'research': research})

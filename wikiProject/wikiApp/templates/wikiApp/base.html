@@ -20,9 +20,10 @@
     <a href="{% url 'allEntries' %}">ALL ENTRIES</a>
     <a href="{% url 'newEntry' %}">NEW ENTRY</a>
     <a href="{% url 'yourEntries' %}">YOUR ENTRIES</a>
-    <a href="{% url 'logout' %}">logout</a>
-    <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search Term(s)" aria-label="Search">
+    <a href="{% url 'logout' %}">LOGOUT</a>
+    <form class="form-inline" action="{% url 'search' %}" method="post">
+        {% csrf_token %}
+        <input class="form-control mr-sm-2" type="text" name="mySearch" placeholder="Search Term(s)" aria-label="Search" >
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
 </nav>
@@ -31,10 +32,11 @@
     <a class="navbar-brand">W&middot;I&middot;K&middot;I</a>
     <a href="{% url 'index' %}">HOME</a>
     <a href="{% url 'allEntries' %}">ALL ENTRIES</a>
-    <a href="{% url 'login' %}">login</a>
-    <a href="{% url 'newAccount' %}">New Account</a>
-    <form class="form-inline" method="post" action="search">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search Term(s)" aria-label="Search">
+    <a href="{% url 'login' %}">LOGIN</a>
+    <a href="{% url 'newAccount' %}">NEW ACCOUNT</a>
+    <form class="form-inline" method="post" action="{% url 'search' %}" >
+        {% csrf_token %}
+        <input class="form-control mr-sm-2" type="text" name="mySearch" placeholder="Search Term(s)" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
 </nav>

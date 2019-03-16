@@ -19,7 +19,7 @@ a:hover{
 }
 
 
-button{
+button, input[type=submit]{
     border-radius: 10px;
     background-color: rgba(21, 119, 43, 0.73);
     color: white;
@@ -27,7 +27,7 @@ button{
     width: 110px;
 }
 
-button:hover{
+button:hover, input[type=submit]:hover{
     background: #0b2e13;
 }
 
@@ -42,12 +42,12 @@ form{
 
 .containerGrid{
     display: grid;
-    grid-template-columns:  repeat(3, 1fr);
+    grid-template-columns:  repeat(4, 1fr);
     grid-gap: 15px;
     grid-template-areas:
-            "nav nav nav"
-            "section section aside"
-            "footer footer footer";
+            "nav nav nav nav"
+            "section section section aside"
+            "footer footer footer footer";
 }
 
 nav{
@@ -58,12 +58,15 @@ nav{
 section{
     grid-area: section;
     border: 1px solid black;
+    border-radius: 10px;
     padding: 20px;
 }
 
 aside{
     grid-area: aside;
     border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
 }
 
 .footer{

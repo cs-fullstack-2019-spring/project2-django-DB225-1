@@ -1,0 +1,7 @@
+{% extends 'wikiApp/base.html' %}
+
+{% if research %}
+{% for eachEl in research %}
+{{ eachEl.post_Title }}
+{% endfor %}
+{%endif %}

@@ -1,7 +1,12 @@
 {% extends 'wikiApp/base.html' %}
 
 {% block content %}
-<h2>DELETE ITEM</h2>
-<p>You sure you want to delete?</p>
+<section>
+<h5>YOU SURE YOU WANT TO DELETE THIS ITEM?</h5>
+    <form method="post">
+        {% csrf_token %}
+        {{ delete_item.as_p }}
 <button>DELETE</button>
+        </form>
+</section>
 {% endblock %}

@@ -1,11 +1,12 @@
 {% extends 'wikiApp/base.html' %}
 
 {% block content %}
-<h2>DELETE ENTRY</h2>
-<p>You sure you want to delete?</p>
+<section>
+<h5>YOU SURE YOU WANT DELETE THIS ENTRY?</h5>
 <form method="post">
     {%csrf_token %}
     <button>DELETE</button>
 </form>
 <a href="{% url 'allEntries' %}">&#10237; BACK TO THE ENTRIES</a>
+</section>
 {% endblock %}
