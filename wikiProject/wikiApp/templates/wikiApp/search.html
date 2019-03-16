@@ -5,7 +5,7 @@
 {% for eachEl in research %}
 
 <section class="borderPage">
-    <h1>{{ eachEl.post_Title }} </h1>
+    <h1 class="centerTitle">{{ eachEl.post_Title }} </h1>
     <p>{{ eachEl.post_Text}}</p>
     <a href="{% url 'allEntries' %}">&#10237; BACK TO THE ENTRIES</a>
 </section>
