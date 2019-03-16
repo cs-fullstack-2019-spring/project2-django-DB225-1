@@ -8,7 +8,8 @@ from django.db.models import Q
 
 # The welcome page
 def index(request):
-    return render(request, 'wikiApp/index.html')
+    allPosts = PostModel.objects.all()
+    return render(request, 'wikiApp/index.html', {'allPosts': allPosts})
 
 
 # Create a new Account

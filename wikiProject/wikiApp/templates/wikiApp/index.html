@@ -4,9 +4,26 @@
 <section>
 {% if user.is_authenticated %}
 <h2>WELCOME TO YOUR WIKI WORLD</h2>
-
-{% else %}
+    {% if allPosts %}
+        {% for eachPost in allPosts %}
+    <h4>{{ eachPost.post_Title }}</h4>
+    Last updated date/time : <i>{{ eachPost.updatedDateTime }}</i>
+    <hr>
+    {% endfor %}
+    {% else %}
+    <h1>No Post Available</h1>
+    {% endif %}
+    {% else %}
 <h2>WIKIPEDIA</h2>
+    {% if allPosts %}
+    {% for eachPost in allPosts %}
+    <h4>{{ eachPost.post_Title }}</h4>
+    Last updated date/time : <i>{{ eachPost.updatedDateTime }}</i>
+    <hr>
+    {% endfor %}
+    {% else %}
+    <h1>No Post Available</h1>
+    {% endif %}
 {% endif %}
 </section>
 {% endblock %}

@@ -11,12 +11,14 @@
 </section>
 <aside>
     <h6>Related information about {{ eachEl.post_Title }}:</h6>
+    {% if relatedItem %}
     {% for items in relatedItem %}
     <p>{{ items.item_Title }}</p>
     <a href="{% url 'editRelatedItems' items.id %}">EDIT</a>
     <a href="{% url 'deleteRelatedItems' items.id %}">DELETE</a>
     <hr>
     {% endfor %}
+    {% endif %}
     <a href="{% url 'newRelatedItems' eachEl.id %}">Add Related Item</a> <br><br>
 </aside>
 

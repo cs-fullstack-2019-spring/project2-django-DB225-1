@@ -31,14 +31,6 @@ button:hover, input[type=submit]:hover{
     background: #0b2e13;
 }
 
-form{
-    border-radius: 15px;
-}
-
-
-
-
-
 
 .containerGrid{
     display: grid;
@@ -75,3 +67,4 @@ aside{
     height: 100px;
     background: rgba(0, 33, 0, 0.34);
 }
+
