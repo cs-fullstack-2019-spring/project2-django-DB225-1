@@ -99,7 +99,10 @@ aside{
     font-weight: bold;
 }
 
-
+/*To center the text of the related item*/
+.relatedItemStyle{
+    text-align: center;
+}
 
 /****************************************************************************/
 

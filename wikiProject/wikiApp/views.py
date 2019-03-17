@@ -109,7 +109,7 @@ def editRelatedItems(request, item_id):
         editedItem.save()
         print(editedItem)
         return redirect('allEntries')
-    return render(request, 'wikiApp/editRelatedItems.html', {'editedItem': editedItem}, {"item_id": item_id})
+    return render(request, 'wikiApp/editRelatedItems.html', {'editedItem': editedItem, "item_id": item_id})
 
 
 # Delete the item related to an entry
