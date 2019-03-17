@@ -3,6 +3,7 @@
 {% block content %}
 <section class="borderPage">
 <h1 class="centerTitle">{{ clickOnEntry.post_Title }} </h1>
+    <img src="{{ clickOnEntry.post_Image.url }}" alt="Card image cap" width="200" style="float: right" >
 <p>{{ clickOnEntry.post_Text}}</p>
     <a href="{% url 'allEntries' %}">&#10237; BACK TO THE ENTRIES</a>
 </section>
