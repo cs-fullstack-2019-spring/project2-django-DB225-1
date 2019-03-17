@@ -6,6 +6,7 @@
 
 <section class="borderPage">
     <h1 class="centerTitle">{{ eachEl.post_Title }} </h1>
+    <img src="{{ eachEl.post_Image.url }}" alt="Card image cap" width="200" style="float: right" >
     <p>{{ eachEl.post_Text}}</p>
     <a href="{% url 'allEntries' %}">&#10237; BACK TO THE ENTRIES</a>
 </section>
