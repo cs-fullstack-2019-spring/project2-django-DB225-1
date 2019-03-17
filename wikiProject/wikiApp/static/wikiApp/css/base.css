@@ -111,13 +111,13 @@ aside{
 
 @keyframes blink_me{
     0% {color: black}
-    25% {color: #2f7416}
+    25% {color: rgba(41, 119, 20, 0.85)}
     100% {color: black}
 }
 
 @-webkit-keyframes blink_me{
     0% {color: black}
-    25% {color: #2f7416}
+    25% {color: rgba(41, 119, 20, 0.85)}
     100% {color: black}
 }
 /***************************************************************************/

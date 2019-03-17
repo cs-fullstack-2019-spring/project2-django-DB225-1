@@ -9,6 +9,8 @@
     <h4>{{ eachPost.post_Title }}</h4>
     <b>Updated on :</b> <i>{{ eachPost.updatedDateTime }}</i>
     <b>created on :</b> <i>{{ eachPost.createdDateTime }}</i>
+    <a href="{% url 'editEntry' eachPost.id %}">Edit</a>
+    <a href="{% url 'deleteEntry' eachPost.id %}">Delete</a> <br> <br>
     <hr>
     {% endfor %}
     {% else %}

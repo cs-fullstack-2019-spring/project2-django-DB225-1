@@ -58,7 +58,7 @@ def yourEntries(request):
         return render(request, 'wikiApp/yourEntries.html')
 
 
-# Click on any entry to have more informations
+# Click on the picture of any entry to have more informations
 def readEntry(request, entry_id):
     relatedItem = RelatedItemsModel.objects.all()
     clickOnEntry = get_object_or_404(PostModel, pk=entry_id)
@@ -85,7 +85,7 @@ def deleteEntry(request, delete_id):
     return render(request, 'wikiApp/deleteEntry.html', {"delete_entry": delete_entry})
 
 
-# Create an item related to the specific search
+# Create an item related to an entry
 def newRelatedItems(request, item_id):
     newItem = RelatedItemsForm(request.POST or None, request.FILES)
     if request.method == 'POST' and newItem.is_valid():
@@ -101,7 +101,7 @@ def newRelatedItems(request, item_id):
     return render(request, 'wikiApp/newRelatedItems.html', {'form': newItem, "item_id": item_id})
 
 
-# Edit the item related to the specific search
+# Edit the item related to an entry
 def editRelatedItems(request, item_id):
     edit_item = get_object_or_404(RelatedItemsModel, pk=item_id)
     editedItem = RelatedItemsForm(request.POST or None, instance=edit_item)
@@ -112,7 +112,7 @@ def editRelatedItems(request, item_id):
     return render(request, 'wikiApp/editRelatedItems.html', {'editedItem': editedItem}, {"item_id": item_id})
 
 
-# Delete the item related to the specific search
+# Delete the item related to an entry
 def deleteRelatedItems(request, delete_item):
     delete_item = get_object_or_404(RelatedItemsModel, pk=delete_item)
     if request.method == 'POST':
@@ -122,6 +122,7 @@ def deleteRelatedItems(request, delete_item):
     return render(request, 'wikiApp/deleteRelatedItems.html', {"delete_item": delete_item})
 
 
+# find informations through the search bar
 def search(request):
     makeSearch = request.POST['mySearch']
     research = PostModel.objects.filter(Q(post_Title__startswith=makeSearch))

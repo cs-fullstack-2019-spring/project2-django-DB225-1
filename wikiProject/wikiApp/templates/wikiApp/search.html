@@ -25,10 +25,11 @@
     <a href="{% url 'newRelatedItems' eachEl.id %}">Add Related Item</a> <br><br>
     {% endif %}
 </aside>
-
 {% endfor %}
 {% else %}
-<h3>No such information</h3>
+<section>
+<h3>No such information</h3> <br>
+<a href="{% url 'allEntries' %}">&#10237; BACK TO THE ENTRIES</a>
+</section>
 {% endif %}
-
 {% endblock %}
