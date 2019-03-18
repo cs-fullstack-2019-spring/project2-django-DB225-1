@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.
+# Model for the users
 class UserLoginModel(models.Model):
     username = models.CharField(max_length=200)
     email = models.EmailField()
@@ -12,7 +13,7 @@ class UserLoginModel(models.Model):
     def __str__(self):
         return self.username
 
-
+# Model for the entries
 class PostModel(models.Model):
     post_Title = models.CharField(max_length=200)
     post_Text = models.TextField()
@@ -24,7 +25,7 @@ class PostModel(models.Model):
     def __str__(self):
         return self.post_Title
 
-
+# Model for the items related to each entry
 class RelatedItemsModel(models.Model):
     item_Title = models.CharField(max_length=200)
     item_Text = models.TextField()

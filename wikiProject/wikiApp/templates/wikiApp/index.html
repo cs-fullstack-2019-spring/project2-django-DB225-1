@@ -7,8 +7,8 @@
     {% if allPosts %}
         {% for eachPost in allPosts %}
     <h4>{{ eachPost.post_Title }}</h4>
-    <b>Updated on :</b> <i>{{ eachPost.updatedDateTime }}</i>
     <b>created on :</b> <i>{{ eachPost.createdDateTime }}</i>
+    <b>Updated on :</b> <i>{{ eachPost.updatedDateTime }}</i>
     <a href="{% url 'editEntry' eachPost.id %}">Edit</a>
     <a href="{% url 'deleteEntry' eachPost.id %}">Delete</a> <br> <br>
     <hr>
@@ -22,8 +22,8 @@
     {% if allPosts %}
     {% for eachPost in allPosts %}
     <h4>{{ eachPost.post_Title }}</h4>
-    <b>Updated on :</b> <i>{{ eachPost.updatedDateTime }}</i>
     <b>created on :</b> <i>{{ eachPost.createdDateTime }}</i>
+    <b>Updated on :</b> <i>{{ eachPost.updatedDateTime }}</i>
     <hr>
     {% endfor %}
     {% else %}
@@ -32,8 +32,8 @@
 {% endif %}
 </section>
 <aside>
-    <h1>For a better view</h1>
-    <h1>GO TO</h1>
-   <h3><span class="blink_me">&#8632; ALL ENTRIES</span></h3>
+    <h3>For a better view</h3>
+    <h3>GO TO</h3>
+   <h1 style="font-size: 90px">&#8632; ALL ENTRIES</h1>
 </aside>
 {% endblock %}

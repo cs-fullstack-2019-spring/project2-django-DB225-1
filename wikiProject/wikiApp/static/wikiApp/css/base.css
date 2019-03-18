@@ -104,26 +104,5 @@ aside{
     text-align: center;
 }
 
-/****************************************************************************/
 
-/******************************** BLINK EFFECT *****************************/
-/*The blink effect in the word 'ALL ENTRIES' in the home page*/
-.blink_me{
-    -webkit-animation: blink_me 1s step-start infinite;
-    animation: blink_me 1s step-start infinite;
-    font-weight: bold;
-    font-size: 100px;
-}
-
-@keyframes blink_me{
-    0% {color: black}
-    25% {color: rgba(41, 119, 20, 0.85)}
-    100% {color: black}
-}
-
-@-webkit-keyframes blink_me{
-    0% {color: black}
-    25% {color: rgba(41, 119, 20, 0.85)}
-    100% {color: black}
-}
 /***************************************************************************/

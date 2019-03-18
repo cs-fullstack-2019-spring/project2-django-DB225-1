@@ -32,15 +32,20 @@ def allEntries(request):
 
 # Create a new entry
 def newEntry(request):
+    # POST Request
     new_entry = PostForm(request.POST or None)
     print(request.POST)
+    # If the form is being pushed to this function
     if request.method == 'POST' and new_entry.is_valid():
+        # To put all the user's information from the HTML page into this new_entry variable
         new_entry = PostForm(request.POST, request.FILES)
         loggedInUser = get_object_or_404(UserLoginModel, username=request.user)
+        # Create and save a new User entry
         PostModel.objects.create(post_Title=request.POST["post_Title"], post_Text=request.POST["post_Text"],
                                  post_Image=request.FILES["post_Image"], postForeignKey=loggedInUser)
 
         return redirect('allEntries')
+    # GET Request
     else:
         print(new_entry.errors)
         print(new_entry.non_field_errors)
@@ -50,8 +55,11 @@ def newEntry(request):
 
 # Personal entries of each user
 def yourEntries(request):
+    # If the current person is logged in, do the code below
     if request.user.is_authenticated:
+        # This puts the logged in user entry into the variable userLoggedIn
         userLoggedIn = UserLoginModel.objects.get(username=request.user)
+        # This will grab all of the entries for the logged in user
         personalInfo = PostModel.objects.filter(postForeignKey=userLoggedIn)
         return render(request, 'wikiApp/yourEntries.html', {"personalInfo": personalInfo})
     else:
