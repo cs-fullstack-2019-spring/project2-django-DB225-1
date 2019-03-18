@@ -4,6 +4,7 @@
 <section>
 <h2>ALL ENTRIES</h2>
     <a href="{% url 'index' %}">&#10237; HOME</a>
+    {# for all the posts we made, we create a css card #}
 {% if allPosts %}
 <div class="gridContainer">
     {% for eachPost in allPosts %}
@@ -16,6 +17,7 @@
             <p>All the next informations about {{ eachPost.post_Title }} are verified.</p>
             <p class="card-text">created on :{{ eachPost.createdDateTime }}</p>
             <p class="card-text">Updated on :{{ eachPost.updatedDateTime }}</p>
+            {# the user can't edit or delete an entry unless he is logged in  #}
             {% if user.is_authenticated %}
             <a href="{% url 'editEntry' eachPost.id %}">Edit</a>
             <a href="{% url 'deleteEntry' eachPost.id %}">Delete</a> <br> <br>
@@ -24,10 +26,12 @@
     </div>
     {% endfor %}
 </div>
+    {# if we have no entry available #}
 {% else %}
 <h1>No Post Available</h1>
 {% endif %}
 </section>
+{# the guide text #}
 <aside>
    CLICK ON THE <span class="bigText">IMAGES</span> FOR MORE DETAILS
 </aside>
