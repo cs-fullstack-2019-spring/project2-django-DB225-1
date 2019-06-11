@@ -1,3 +1,4 @@
+
 """
 Django settings for wikiProject project.
 
@@ -25,7 +26,7 @@ SECRET_KEY = 'm0lw+b)-!7u6susy9=gi$xmny$!v4%9-_#wa_^m!$v7!trz+(k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'app1.didierbonga.com', '134.209.166.56']
 
 
 # Application definition
@@ -121,6 +122,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
